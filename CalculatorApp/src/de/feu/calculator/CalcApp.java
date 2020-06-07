@@ -3,12 +3,14 @@ package de.feu.calculator;
 public class CalcApp {
 
 	public static void main(String[] args) {
-		Calculator calculator = new Calculator();
-		CalculatorUi ui = new CalculatorUi(calculator);
+		Calculator multiplyCalculator = new MultiplyCalculator();
+		Calculator addCalculator = new AddCalculator();
+		CalculatorUi ui = new CalculatorUi(multiplyCalculator);
+		CalculatorUi ui2 = new CalculatorUi(addCalculator);
 		ui.on();
 
-		if (calculator.hasResult()) {
-			System.out.println("Ergebnis: " + calculator.getResult());
+		if (multiplyCalculator.hasResult()) {
+			System.out.println("Ergebnis: " + multiplyCalculator.getResult());
 		}
 	}
 

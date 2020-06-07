@@ -1,57 +1,15 @@
 package de.feu.calculator;
 
-import java.util.ArrayList;
-import java.util.List;
+public interface Calculator {
 
-class Calculator {
-	private static final String ADD_OPERATOR = "+";
-	static int counter = 0;
-	private List<Integer> numbers;
+	boolean hasResult();
 
-	// Parameterlose Konstruktor
-	Calculator() {
-		super();
-		this.numbers = new ArrayList<>();
-		counter++;
-	}
+	void add(int zahl);
 
-	boolean hasResult() {
-		return !this.numbers.isEmpty();
-	}
+	String getCalculation();
 
-	void add(int zahl) {
-		this.numbers.add(zahl);
-	}
+	String getResult();
 
-	String getCalculation() {
-		String berechnung = "";
-		for (Integer integer : this.numbers) {
-			if (berechnung.length() > 0) {
-				berechnung = berechnung + ADD_OPERATOR;
-			}
-			berechnung = berechnung + integer;
-		}
-		return berechnung;
-	}
-
-	String getResult() {
-		return String.valueOf(calculate());
-	}
-
-	void reset() {
-		this.numbers.clear();
-	}
-
-	private int calculate() {
-		int result = 0;
-		for (Integer integer : this.numbers) {
-			result += integer; // identisch zu result = result+integer;
-		}
-		return result;
-	}
-
-//	private int calculateStreams() {
-//		return this.numbers.stream().reduce(0, (a, b) -> a + b);
-//	}
+	void reset();
 
 }

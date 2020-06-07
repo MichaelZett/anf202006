@@ -3,7 +3,6 @@ package de.feu.calculator;
 import java.util.Scanner;
 
 public class CalculatorUi {
-	private static final String CALC_OPERATOR = "=";
 	private Scanner scanner;
 	private Calculator calculator;
 
@@ -22,7 +21,7 @@ public class CalculatorUi {
 
 				this.calculator.add(nextZahl);
 				System.out.println("Aktuelle Berechnung: " + this.calculator.getCalculation());
-			} while (!this.scanner.hasNext(CALC_OPERATOR));
+			} while (!this.scanner.hasNext(Operator.CALC.symbol));
 		} finally {
 			this.scanner.close();
 		}
