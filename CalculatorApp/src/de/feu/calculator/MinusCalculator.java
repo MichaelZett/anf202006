@@ -3,12 +3,13 @@ package de.feu.calculator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiplyCalculator implements Calculator {
+public class MinusCalculator implements Calculator {
+
 	static int counter = 0;
 	private List<Integer> numbers;
 
 	// Parameterlose Konstruktor
-	MultiplyCalculator() {
+	public MinusCalculator() {
 		super();
 		this.numbers = new ArrayList<>();
 		counter++;
@@ -29,7 +30,7 @@ public class MultiplyCalculator implements Calculator {
 		String berechnung = "";
 		for (Integer integer : this.numbers) {
 			if (berechnung.length() > 0) {
-				berechnung = berechnung + Operator.MULTIPLY.symbol;
+				berechnung = berechnung + Operator.MINUS.symbol;
 			}
 			berechnung = berechnung + integer;
 		}
@@ -47,10 +48,14 @@ public class MultiplyCalculator implements Calculator {
 	}
 
 	private int calculate() {
-		int result = 1;
-		for (Integer integer : this.numbers) {
-			result *= integer; 
+		if (hasResult()) {
+			int result = this.numbers.get(0);
+			for (int i = 1; i < this.numbers.size(); i++) {
+				result = result - this.numbers.get(i);
+			}
+			return result;
+		} else {
+			return 0;
 		}
-		return result;
 	}
 }

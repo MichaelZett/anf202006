@@ -5,12 +5,13 @@ public class CalcApp {
 	public static void main(String[] args) {
 		Calculator multiplyCalculator = new MultiplyCalculator();
 		Calculator addCalculator = new AddCalculator();
-		CalculatorUi ui = new CalculatorUi(multiplyCalculator);
-		CalculatorUi ui2 = new CalculatorUi(addCalculator);
+		Calculator minusCalculator = new MinusCalculator();
+
+		CalculatorUi ui = new CalculatorUi(minusCalculator);
 		ui.on();
 
-		if (multiplyCalculator.hasResult()) {
-			System.out.println("Ergebnis: " + multiplyCalculator.getResult());
+		if (minusCalculator.hasResult()) {
+			System.out.println("Ergebnis: " + minusCalculator.getResult());
 		}
 	}
 
