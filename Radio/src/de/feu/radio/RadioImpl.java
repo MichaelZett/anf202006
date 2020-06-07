@@ -1,41 +1,54 @@
 package de.feu.radio;
 
 public class RadioImpl implements Radio {
+	private boolean on;
+
+	private int volume;
+	private float[] frequencies;
+	private int currentFrequency;
+
+	public RadioImpl() {
+		this.on = false;
+		this.volume = 10;
+
+		this.frequencies = new float[2];
+		this.frequencies[0] = (float) 106.8;
+		this.frequencies[1] = 107.4f;
+		this.currentFrequency = 0;
+	}
 
 	@Override
 	public boolean isOn() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.on;
 	}
 
 	@Override
 	public void turnOn() {
-		// TODO Auto-generated method stub
-
+		this.on = true;
 	}
 
 	@Override
 	public int getVolume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.volume;
 	}
 
 	@Override
 	public void volumeUp() {
-		// TODO Auto-generated method stub
-
+		this.volume++;
 	}
 
 	@Override
 	public float getFrequency() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.frequencies[this.currentFrequency];
 	}
 
 	@Override
 	public void nextStation() {
-		// TODO Auto-generated method stub
-
+		if (this.currentFrequency < this.frequencies.length - 1) {
+			this.currentFrequency++;
+		} else {
+			this.currentFrequency = 0;
+		}
 	}
 
 }
