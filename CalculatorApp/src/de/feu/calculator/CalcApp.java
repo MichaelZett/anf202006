@@ -4,10 +4,12 @@ public class CalcApp {
 
 	public static void main(String[] args) {
 		Calculator calculator = new Calculator();
-		Calculator calc2 = new Calculator();
+		CalculatorUi ui = new CalculatorUi(calculator);
+		ui.on();
 
-		calculator.on();
-		System.out.println("Anzahl an Calculators: " + Calculator.counter);
+		if (calculator.hasResult()) {
+			System.out.println("Ergebnis: " + calculator.getResult());
+		}
 	}
 
 }

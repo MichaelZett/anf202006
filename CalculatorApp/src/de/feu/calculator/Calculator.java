@@ -2,53 +2,44 @@ package de.feu.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class Calculator {
-	private static final String CALC_OPERATOR = "=";
+class Calculator {
+	private static final String ADD_OPERATOR = "+";
 	static int counter = 0;
-	private Scanner scanner;
 	private List<Integer> numbers;
 
 	// Parameterlose Konstruktor
-	public Calculator() {
+	Calculator() {
 		super();
 		this.numbers = new ArrayList<>();
 		counter++;
 	}
 
-	public void on() {
-		try {
-			reset();
-			do {
-				System.out.println("Gib eine Zahl ein!");
+	boolean hasResult() {
+		return !this.numbers.isEmpty();
+	}
 
-				int nextZahl = getNumberFromUser();
+	void add(int zahl) {
+		this.numbers.add(zahl);
+	}
 
-				this.numbers.add(nextZahl);
-			} while (!this.scanner.hasNext(CALC_OPERATOR));
-			calcAndShow();
-		} finally {
-			this.scanner.close();
+	String getCalculation() {
+		String berechnung = "";
+		for (Integer integer : this.numbers) {
+			if (berechnung.length() > 0) {
+				berechnung = berechnung + ADD_OPERATOR;
+			}
+			berechnung = berechnung + integer;
 		}
+		return berechnung;
 	}
 
-	private void calcAndShow() {
-		int result = calculate();
-		System.out.println("Die Summe ist: " + result);
+	String getResult() {
+		return String.valueOf(calculate());
 	}
 
-	private void reset() {
-		this.scanner = new Scanner(System.in);
+	void reset() {
 		this.numbers.clear();
-	}
-
-	private int getNumberFromUser() {
-		while (!this.scanner.hasNextInt()) {
-			System.out.println("Das ist keine Zahl!");
-			this.scanner.next();
-		}
-		return this.scanner.nextInt();
 	}
 
 	private int calculate() {
